@@ -10,24 +10,24 @@ namespace AsrServiceTest.Services
 {
     internal class Replacement : IReplacement
     {
-        private readonly IToolSelection _toolSelection;
+        private readonly IProductSelection _productSelection;
         private readonly IConsoleOutputResService _consoleOutputResService;
         private readonly IPayment _payment;
         private readonly ISavePaymentData _savePaymentData;
-        private ITool tool;
-        public Replacement(IToolSelection toolSelection, IConsoleOutputResService consoleOutputResService, IPayment payment, ISavePaymentData savePaymentData)
+        private IProduct product;
+        public Replacement(IProductSelection productSelection, IConsoleOutputResService consoleOutputResService, IPayment payment, ISavePaymentData savePaymentData)
         {
-            _toolSelection = toolSelection;
+            _productSelection = productSelection;
             _consoleOutputResService = consoleOutputResService;
             _payment = payment;
             _savePaymentData = savePaymentData;
         }
-        public string ReplaceChosenTool()
+        public string ReplaceChosenProduct()
         {
-            tool = _toolSelection.GetInput();
-            int overpayment = _payment.Pay(tool);
-            _savePaymentData.Save(tool.Name, tool.Price, overpayment);
-            return _consoleOutputResService.ReplaceOutput(tool);
+            product = _productSelection.GetInput();
+            int overpayment = _payment.Pay(product);
+            _savePaymentData.Save(product.Id, product.Name, product.Price, overpayment);
+            return _consoleOutputResService.ReplaceOutput(product);
         }
     }
 }

@@ -12,16 +12,16 @@ namespace AsrServiceTest.Services
 {
     internal class PaymentOverview : IPaymentOverview
     {
-        private readonly IPaymentData _data;
+        private readonly IPaymentData _paymentData;
         private readonly IConsoleOutputResService _consoleOutputResService;       
-        public PaymentOverview(IPaymentData data, IConsoleOutputResService consoleOutputResService)
+        public PaymentOverview(IPaymentData paymentData, IConsoleOutputResService consoleOutputResService)
         {
-            _data = data;
+            _paymentData = paymentData;
             _consoleOutputResService = consoleOutputResService;
         }
         public string PrintPaymentData()
         {
-            _consoleOutputResService.PrintList(_data);            
+            _consoleOutputResService.PrintList(_paymentData);            
             return "";
         }
     }

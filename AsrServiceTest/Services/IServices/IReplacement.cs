@@ -8,6 +8,6 @@ namespace AsrServiceTest.Services.IServices
 {
     internal interface IReplacement
     {
-        public string ReplaceChosenTool();
+        public string ReplaceChosenProduct();
     }
 }

@@ -13,55 +13,79 @@ namespace AsrServiceTest.Services
 {
     internal class ConsoleOutputResService : IConsoleOutputResService
     {
-        public string DiagnosOutput(ITool chosenTool)
+        public string DiagnosOutput(IProduct chosenProduct)
         {
-            if (chosenTool.State == 0)
+            if (chosenProduct.State == 0)
             {
-                return ((chosenTool.Name).ToString() + " u need replace ");
+                return ((chosenProduct.Name).ToString() + " u need replace ");
             }
-            if (chosenTool.State == 1)
+            if (chosenProduct.State == 1)
             {
-                return ((chosenTool.Name).ToString() + " is ok");
+                return ((chosenProduct.Name).ToString() + " is ok");
             }
             return "";
         }
-        public int ToolSelectionOutput()
+        public int ProductSelectionOutput()
         {
-            Console.WriteLine("1 - oil,2 - wheels");
-            return int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("1 - oil,2 - wheels");
+                try
+                {
+                    return int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+
+                }               
+            }
         }
-        public string ReplaceOutput(ITool chosenTool)
+        public string ReplaceOutput(IProduct chosenProduct)
         {
-            return chosenTool.Name.ToString() + " replaced";
+            return chosenProduct.Name.ToString() + " replaced";
         }
-        public int PaymentOutputStart(ITool chosenTool)
+        public int PaymentOutputStart(IProduct chosenProduct)
         {
-            Console.WriteLine("u chose {0} it cost {1} pls input ur money", chosenTool.Name, chosenTool.Price);
-            return int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("u chose {0} it cost {1} pls input ur money", chosenProduct.Name, chosenProduct.Price);
+                try
+                {
+                    return int.Parse(Console.ReadLine());
+                }
+                catch { return 0; }                
+            }
         }
-        public void PaymentOutputPaid(ITool chosenTool, int overpayment)
+        public void PaymentOutputPaid(IProduct chosenProduct, int overpayment)
         {
             if (overpayment > 0)
             {
                 Console.WriteLine("ur overpayment : {0}", overpayment);
             }
-            Console.WriteLine("{0} paid", chosenTool.Name);
+            Console.WriteLine("{0} paid", chosenProduct.Name);
         }
         public int PaymentOutputUnderpayment(int insufficientFunds)
         {
-            Console.WriteLine("not enough {0},input more money pls", insufficientFunds);
-            return int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("not enough {0},input more money pls", insufficientFunds);
+                try
+                {
+                    return int.Parse(Console.ReadLine());
+                }
+                catch { return 0; }               
+            }
         }
-        public string PrintList(IPaymentData data)
+        public string PrintList(IPaymentData paymentData)
         {
-            if (data.Mylist.Count == 0)
+            if (paymentData.MyList.Count == 0)
             {
                 Console.WriteLine("List is empty");
             }
             else
             {
                 Console.WriteLine("List of cash receipts :");
-                foreach (OrderLine check in data.Mylist)
+                foreach (OrderLine check in paymentData.MyList)
                 {
                     Console.WriteLine("" + check);
                 }

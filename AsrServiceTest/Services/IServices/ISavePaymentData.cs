@@ -8,6 +8,6 @@ namespace AsrServiceTest.Services.IServices
 {
     internal interface ISavePaymentData
     {
-        public void Save(string serviceName, int serviceCost, int overpayment);
+        public void Save(Guid id, string serviceName, int serviceCost, int overpayment);
     }
 }

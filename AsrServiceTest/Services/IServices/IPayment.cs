@@ -9,6 +9,6 @@ namespace AsrServiceTest.Services.IServices
 {
     internal interface IPayment
     {        
-        public int Pay(ITool chosenTool);
+        public int Pay(IProduct hosenProduct);
     }
 }

@@ -11,18 +11,18 @@ namespace AsrServiceTest.Services
 {
     internal class Diagnostics : IDiagnostics
     {
-        private readonly IToolSelection _toolSelection;
+        private readonly IProductSelection _productSelection;
         private readonly IConsoleOutputResService _consoleOutputResService;
-        private ITool tool;
-        public Diagnostics(IToolSelection toolSelection, IConsoleOutputResService consoleOutputResService)
+        private IProduct product;
+        public Diagnostics(IProductSelection productSelection, IConsoleOutputResService consoleOutputResService)
         {
-            _toolSelection = toolSelection;
-            _consoleOutputResService = consoleOutputResService;
+            _productSelection = productSelection;
+            _consoleOutputResService = consoleOutputResService;           
         }
         public string CheckState()
         {
-            tool = _toolSelection.GetInput();
-            string outputOfOilCheckRes = _consoleOutputResService.DiagnosOutput(tool);            
+            product = _productSelection.GetInput();
+            string outputOfOilCheckRes = _consoleOutputResService.DiagnosOutput(product);            
             return outputOfOilCheckRes;
         }
     }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AsrServiceTest.Data.IData
 {
-    internal interface ITool
+    internal interface IProduct
     {
+        Guid Id { get; set; }
         string Name { get; }
         int Price { get; }
         int State { get; }

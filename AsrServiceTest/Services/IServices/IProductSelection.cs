@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AsrServiceTest.Services.IServices
 {
-    internal interface IToolSelection
+    internal interface IProductSelection
     {
-        public ITool GetChosenTool(int selectionIndex);
-        public ITool GetInput();
+        public IProduct GetChosenProduct(int selectionIndex);
+        public IProduct GetInput();
     }
 }

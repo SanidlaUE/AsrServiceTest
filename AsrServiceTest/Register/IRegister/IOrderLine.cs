@@ -8,8 +8,8 @@ namespace AsrServiceTest.Register.IRegister
 {
     internal interface IOrderLine
     {
-        //string ServiceName { get; set; }
-        //int ServiceCost { get; set; }
-        //int OverpaymentValue { get; set; }
+        //public bool Equals(object? obj);
+        //public string ToString();
+        //public int GetHashCode();
     }
 }

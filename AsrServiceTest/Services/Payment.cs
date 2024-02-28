@@ -17,24 +17,24 @@ namespace AsrServiceTest.Services
         }
         private int inputCash;
         private int overpayment;
-        public int Pay(ITool chosenTool)
+        public int Pay(IProduct chosenProduct)
         {
-            inputCash = _consoleOutputResService.PaymentOutputStart(chosenTool);
+            inputCash = _consoleOutputResService.PaymentOutputStart(chosenProduct);
 
-            for (int i = chosenTool.Price; i > inputCash;)
+            for (int i = chosenProduct.Price; i > inputCash;)
             {
-                int insufficientFunds = chosenTool.Price - inputCash;
+                int insufficientFunds = chosenProduct.Price - inputCash;
                 inputCash += _consoleOutputResService.PaymentOutputUnderpayment(insufficientFunds);
             }
-            if (inputCash == chosenTool.Price)
+            if (inputCash == chosenProduct.Price)
             {
-                _consoleOutputResService.PaymentOutputPaid(chosenTool, overpayment);
+                _consoleOutputResService.PaymentOutputPaid(chosenProduct, overpayment);
                 return overpayment;
             }
             else
             {
-                overpayment = inputCash - chosenTool.Price;
-                _consoleOutputResService.PaymentOutputPaid(chosenTool, overpayment);
+                overpayment = inputCash - chosenProduct.Price;
+                _consoleOutputResService.PaymentOutputPaid(chosenProduct, overpayment);
                 return overpayment;
             }
         }

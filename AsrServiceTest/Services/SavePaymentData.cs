@@ -11,14 +11,14 @@ namespace AsrServiceTest.Services
 {
     internal class SavePaymentData : ISavePaymentData
     {
-        private readonly IPaymentData _paymentData;        
+        private readonly IPaymentData _paymentData;
         public SavePaymentData(IPaymentData paymentData)
         {
-            _paymentData = paymentData;           
+            _paymentData = paymentData;
         }
-        public void Save(string serviceName, int serviceCost, int overpayment)
+        public void Save(Guid id, string serviceName, int serviceCost, int overpayment)
         {
-            _paymentData.Mylist.Add(new OrderLine(serviceName, serviceCost, overpayment));
+            _paymentData.MyList.Add(new OrderLine(id, serviceName, serviceCost, overpayment));           
         }
     }
 }

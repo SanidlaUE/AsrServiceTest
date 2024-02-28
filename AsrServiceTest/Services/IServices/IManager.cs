@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsrServiceTest.Services
+namespace AsrServiceTest.Services.IServices
 {
-    internal class Autorizer
+    internal interface IManager
     {
+        public string Manage(int chosenItemMainMenu);
     }
 }

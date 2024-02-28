@@ -12,57 +12,53 @@ using System.Security.Cryptography;
 internal class Program
 {
     private static void Main(string[] args)
-    { 
-        //var serviceProvider = new ServiceCollection()
-        //    .AddTransient<Oil>()
-        //    .AddTransient<Wheels>()
-        //    .AddTransient<ITool>(provider => provider.GetService<Oil>())
-        //    .AddTransient<ITool>(provider => provider.GetService<Wheels>())
-        //    .AddTransient<IToolSelection, ToolSelection>()
-        //    .AddTransient<IDiagnostics, Diagnostics>()
-        //    .AddTransient<IConsoleView, ConsoleView>()
+    {
+        var serviceProvider = new ServiceCollection()
+            .AddSingleton<IPaymentData, PaymentData>()
+            .AddTransient<IProduct, Oil>()
+            .AddTransient<IProduct, Wheels>()       
+            .AddTransient<IManager, Manager>()
+            .AddTransient<IConsoleOutputResService, ConsoleOutputResService>()
+            .AddTransient<IConsoleView, ConsoleView>()
+            .AddTransient<IProductSelection, ProductSelection>()
+            .AddTransient<IDiagnostics, Diagnostics>()
+            .AddTransient<IReplacement, Replacement>()
+            .AddTransient<IPayment, Payment>()
+            .AddTransient<ISavePaymentData, SavePaymentData>()
+            .AddTransient<IPaymentOverview, PaymentOverview>()
 
-        //    .BuildServiceProvider();
+
+            .BuildServiceProvider();
+
+        var program = serviceProvider.GetService<IConsoleView>();
+        program.ConsoleInterface();
 
 
-        //var toolSelection = serviceProvider.GetService<IToolSelection>();
-        //var consoleView = serviceProvider.GetService<IConsoleView>();
-        //var diagnostics = serviceProvider.GetService<IDiagnostics>();
-        //consoleView.ConsoleInterface(diagnostics, toolSelection);
-        //diagnostics.CheckState(toolSelection);
 
-        var builder = new ContainerBuilder();
 
-        builder.RegisterType<Oil>().As<ITool>();
-        builder.RegisterType<Wheels>().As<ITool>();
-        builder.RegisterType<PaymentData>().As<IPaymentData>();
-        builder.RegisterType<ToolSelection>().As<IToolSelection>();
-        builder.RegisterType<Diagnostics>().As<IDiagnostics>();
-        builder.RegisterType<ConsoleView>().As<IConsoleView>();
-        builder.RegisterType<Replacement>().As<IReplacement>();
-        builder.RegisterType<Payment>().As<IPayment>();
-        builder.RegisterType<PaymentOverview>().As<IPaymentOverview>(); 
-        builder.RegisterType<SavePaymentData>().As<ISavePaymentData>();
-        builder.RegisterType<ConsoleOutputResService>().As<IConsoleOutputResService>();
 
-        var container = builder.Build();
+        //var builder = new ContainerBuilder();
 
-        using(var scope = container.BeginLifetimeScope())
-        {
-            var oil = new Oil();
-            var wheels = new Wheels();
-            var paymentData = new PaymentData();
-            var consoleOutputResService = new ConsoleOutputResService();
-            var savePaymentData = new SavePaymentData(paymentData);
-            var paymentOverview = new PaymentOverview(paymentData,consoleOutputResService);
-            var toolSelection = new ToolSelection(oil, wheels, consoleOutputResService);
-            var payment = new Payment(consoleOutputResService);           
-            var replacement = new Replacement(toolSelection, consoleOutputResService, payment, savePaymentData);
-            var diagnostics = new Diagnostics(toolSelection,consoleOutputResService);
-            var consoleView = new ConsoleView(diagnostics,replacement,paymentOverview);
+        //builder.RegisterType<Oil>().As<IProduct>();
+        //builder.RegisterType<Wheels>().As<IProduct>();
+        //builder.RegisterType<PaymentData>().As<IPaymentData>().SingleInstance();
+        //builder.RegisterType<ProductSelection>().As<IProductSelection>();
+        //builder.RegisterType<Diagnostics>().As<IDiagnostics>();
+        //builder.RegisterType<ConsoleView>().As<IConsoleView>();
+        //builder.RegisterType<Replacement>().As<IReplacement>();
+        //builder.RegisterType<Payment>().As<IPayment>();
+        //builder.RegisterType<PaymentOverview>().As<IPaymentOverview>();
+        //builder.RegisterType<SavePaymentData>().As<ISavePaymentData>();
+        //builder.RegisterType<ConsoleOutputResService>().As<IConsoleOutputResService>();
 
-            consoleView.ConsoleInterface();
-        }
+        //var container = builder.Build();
 
+        //using (var scope = container.BeginLifetimeScope())
+        //{
+        //    var consoleView = scope.Resolve<IConsoleView>();
+        //    consoleView.ConsoleInterface();
+        //}
     }
+
 }
+

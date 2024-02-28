@@ -11,11 +11,11 @@ namespace AsrServiceTest.Services.IServices
 {
     internal interface IConsoleOutputResService
     {
-        public int ToolSelectionOutput();
-        public string DiagnosOutput(ITool chosenTool);
-        public string ReplaceOutput(ITool chosenTool);
-        public int PaymentOutputStart(ITool chosenTool);
-        public void PaymentOutputPaid(ITool chosenTool,int overpayment);
+        public int ProductSelectionOutput();
+        public string DiagnosOutput(IProduct chosenProduct);
+        public string ReplaceOutput(IProduct chosenProduct);
+        public int PaymentOutputStart(IProduct chosenProduct);
+        public void PaymentOutputPaid(IProduct chosenProduct, int overpayment);
         public int PaymentOutputUnderpayment(int insufficientFunds);
         public string PrintList(IPaymentData data);
     }

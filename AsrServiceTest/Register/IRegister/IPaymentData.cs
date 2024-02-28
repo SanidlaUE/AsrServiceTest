@@ -8,6 +8,6 @@ namespace AsrServiceTest.Register.IRegister
 {
     internal interface IPaymentData
     {
-        public List<OrderLine> Mylist { get; set; }
+        public List<OrderLine> MyList { get; set; }
     }
 }

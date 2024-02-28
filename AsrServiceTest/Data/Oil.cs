@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace AsrServiceTest.Data
 {
-    internal class Oil : ITool
+    internal class Oil : IProduct
     {
+        private Guid id;
+        public Guid Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         private string name = "Oil";
         public string Name
         {

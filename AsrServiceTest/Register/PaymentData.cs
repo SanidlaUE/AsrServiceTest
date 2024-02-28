@@ -11,15 +11,15 @@ namespace AsrServiceTest.Register
 {
     internal class PaymentData : IPaymentData
     {
-        private List<OrderLine> myList;
-        public List<OrderLine> Mylist
+        private List<OrderLine> _myList;
+        public List<OrderLine> MyList
         {
-            get { return myList; }
-            set { myList = value; }
+            get { return _myList; }
+            set { _myList = value; }
         }
         public PaymentData()
         {
-            myList = new List<OrderLine>();
+            _myList = new List<OrderLine>();
         }
     }
 }
