@@ -1,4 +1,6 @@
-﻿using AsrServiceTest.Data.IData;
+﻿using AsrServiceTest.DAL.IRepositories;
+using AsrServiceTest.DAL.Repositories;
+using AsrServiceTest.Data.IData;
 using AsrServiceTest.Register;
 using AsrServiceTest.Register.IRegister;
 using System;
@@ -16,7 +18,9 @@ namespace AsrServiceTest.Services.IServices
         public string ReplaceOutput(IProduct chosenProduct);
         public int PaymentOutputStart(IProduct chosenProduct);
         public void PaymentOutputPaid(IProduct chosenProduct, int overpayment);
-        public int PaymentOutputUnderpayment(int insufficientFunds);
-        public string PrintList(IPaymentData data);
+        public int PaymentOutputUnderpayment(int insufficientFunds);        
+        public void IterationByList(IEnumerable<OrderLine> items);
+        public void StringOutput(OrderLine item);
+        public int IdInput();
     }
 }

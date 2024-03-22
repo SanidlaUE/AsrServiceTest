@@ -8,7 +8,7 @@ namespace AsrServiceTest.Data.IData
 {
     internal interface IProduct
     {
-        Guid Id { get; set; }
+        int Id { get; set; }
         string Name { get; }
         int Price { get; }
         int State { get; }

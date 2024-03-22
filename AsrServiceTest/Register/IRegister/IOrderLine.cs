@@ -8,8 +8,8 @@ namespace AsrServiceTest.Register.IRegister
 {
     internal interface IOrderLine
     {
-        //public bool Equals(object? obj);
-        //public string ToString();
-        //public int GetHashCode();
+        public bool Equals(object? obj);
+        public string ToString();
+        public int GetHashCode();
     }
 }

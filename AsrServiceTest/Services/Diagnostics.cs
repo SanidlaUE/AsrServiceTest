@@ -14,7 +14,9 @@ namespace AsrServiceTest.Services
         private readonly IProductSelection _productSelection;
         private readonly IConsoleOutputResService _consoleOutputResService;
         private IProduct product;
-        public Diagnostics(IProductSelection productSelection, IConsoleOutputResService consoleOutputResService)
+        public Diagnostics(
+            IProductSelection productSelection, 
+            IConsoleOutputResService consoleOutputResService)
         {
             _productSelection = productSelection;
             _consoleOutputResService = consoleOutputResService;           

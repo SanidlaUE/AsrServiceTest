@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsrServiceTest.UserConsoleView
+namespace AsrServiceTest.UserConsoleView.IMenu
 {
     internal interface IConsoleView
     {
-        void ConsoleInterface();
+        void ConsoleInterface();       
     }
 }

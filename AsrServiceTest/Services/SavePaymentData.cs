@@ -1,4 +1,6 @@
-﻿using AsrServiceTest.Register;
+﻿using AsrServiceTest.DAL.IRepositories;
+using AsrServiceTest.DAL.Repositories;
+using AsrServiceTest.Register;
 using AsrServiceTest.Register.IRegister;
 using AsrServiceTest.Services.IServices;
 using System;
@@ -10,15 +12,15 @@ using System.Threading.Tasks;
 namespace AsrServiceTest.Services
 {
     internal class SavePaymentData : ISavePaymentData
-    {
-        private readonly IPaymentData _paymentData;
-        public SavePaymentData(IPaymentData paymentData)
-        {
-            _paymentData = paymentData;
+    {        
+        private readonly IOrderLineRepository _orderLineRepository;
+        public SavePaymentData(IOrderLineRepository orderLineRepository)
+        {           
+            _orderLineRepository = orderLineRepository;
         }
-        public void Save(Guid id, string serviceName, int serviceCost, int overpayment)
-        {
-            _paymentData.MyList.Add(new OrderLine(id, serviceName, serviceCost, overpayment));           
+        public void Save(int id, string serviceName, int serviceCost, int overpayment)
+        {            
+            _orderLineRepository.Add(new OrderLine(id, serviceName, serviceCost, overpayment));
         }
     }
 }

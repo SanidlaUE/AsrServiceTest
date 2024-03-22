@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsrServiceTest.Register.IRegister
+namespace AsrServiceTest.UserConsoleView.IMenu
 {
-    internal interface IPaymentData
+    internal interface ITransactionsMenu
     {
-        public List<OrderLine> MyList { get; set; }
+        public string OutputForTransactions();
     }
 }

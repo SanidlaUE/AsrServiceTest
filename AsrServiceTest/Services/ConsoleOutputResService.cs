@@ -1,4 +1,7 @@
-﻿using AsrServiceTest.Data.IData;
+﻿using AsrServiceTest.DAL;
+using AsrServiceTest.DAL.IRepositories;
+using AsrServiceTest.DAL.Repositories;
+using AsrServiceTest.Data.IData;
 using AsrServiceTest.Register;
 using AsrServiceTest.Register.IRegister;
 using AsrServiceTest.Services.IServices;
@@ -37,7 +40,7 @@ namespace AsrServiceTest.Services
                 catch
                 {
 
-                }               
+                }
             }
         }
         public string ReplaceOutput(IProduct chosenProduct)
@@ -53,7 +56,7 @@ namespace AsrServiceTest.Services
                 {
                     return int.Parse(Console.ReadLine());
                 }
-                catch { return 0; }                
+                catch { return 0; }
             }
         }
         public void PaymentOutputPaid(IProduct chosenProduct, int overpayment)
@@ -73,24 +76,31 @@ namespace AsrServiceTest.Services
                 {
                     return int.Parse(Console.ReadLine());
                 }
-                catch { return 0; }               
+                catch { return 0; }
             }
         }
-        public string PrintList(IPaymentData paymentData)
+        public int IdInput()
+        {            
+            Console.WriteLine("input id");
+            try
+            {
+               return int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        public void IterationByList(IEnumerable<OrderLine> items)
         {
-            if (paymentData.MyList.Count == 0)
+            foreach (var item in items)
             {
-                Console.WriteLine("List is empty");
+                StringOutput(item);
             }
-            else
-            {
-                Console.WriteLine("List of cash receipts :");
-                foreach (OrderLine check in paymentData.MyList)
-                {
-                    Console.WriteLine("" + check);
-                }
-            }
-            return "";
+        }
+        public void StringOutput(OrderLine item)
+        {
+            Console.WriteLine($"Id: {item.Id}, ServiceName: {item.ServiceName}, ServiceCost : {item.ServiceCost}, Overpayment : {item.OverpaymentValue}");
         }
     }
 }

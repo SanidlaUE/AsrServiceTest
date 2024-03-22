@@ -15,7 +15,11 @@ namespace AsrServiceTest.Services
         private readonly IPayment _payment;
         private readonly ISavePaymentData _savePaymentData;
         private IProduct product;
-        public Replacement(IProductSelection productSelection, IConsoleOutputResService consoleOutputResService, IPayment payment, ISavePaymentData savePaymentData)
+        public Replacement(
+            IProductSelection productSelection, 
+            IConsoleOutputResService consoleOutputResService, 
+            IPayment payment, 
+            ISavePaymentData savePaymentData)
         {
             _productSelection = productSelection;
             _consoleOutputResService = consoleOutputResService;

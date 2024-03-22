@@ -14,7 +14,9 @@ namespace AsrServiceTest.Services
         private readonly IEnumerable<IProduct> _products;
         private readonly IConsoleOutputResService _consoleOutputResService;
 
-        public ProductSelection(IEnumerable<IProduct> products, IConsoleOutputResService consoleOutputResService)
+        public ProductSelection(
+            IEnumerable<IProduct> products, 
+            IConsoleOutputResService consoleOutputResService)
         {
             _products = products;
             _consoleOutputResService = consoleOutputResService;
@@ -24,8 +26,7 @@ namespace AsrServiceTest.Services
         public IProduct GetInput()
         {
             int chosenProductForCheck = _consoleOutputResService.ProductSelectionOutput();
-            chosenProduct = GetChosenProduct(chosenProductForCheck);
-            chosenProduct.Id = Guid.NewGuid();
+            chosenProduct = GetChosenProduct(chosenProductForCheck);            
             return chosenProduct;
         }
         public IProduct GetChosenProduct(int selectionIndex)

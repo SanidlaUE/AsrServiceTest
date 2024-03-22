@@ -1,35 +1,43 @@
-﻿using AsrServiceTest.Data;
+﻿using AsrServiceTest;
+using AsrServiceTest.DAL;
+using AsrServiceTest.DAL.IRepositories;
+using AsrServiceTest.DAL.Repositories;
+using AsrServiceTest.Data;
 using AsrServiceTest.Data.IData;
 using AsrServiceTest.Register;
 using AsrServiceTest.Register.IRegister;
 using AsrServiceTest.Services;
 using AsrServiceTest.Services.IServices;
 using AsrServiceTest.UserConsoleView;
+using AsrServiceTest.UserConsoleView.IMenu;
 using Autofac;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Security.Cryptography;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
         var serviceProvider = new ServiceCollection()
-            .AddSingleton<IPaymentData, PaymentData>()
+            .AddSingleton<AppDbContext>()            
             .AddTransient<IProduct, Oil>()
-            .AddTransient<IProduct, Wheels>()       
+            .AddTransient<IProduct, Wheels>()
             .AddTransient<IManager, Manager>()
             .AddTransient<IConsoleOutputResService, ConsoleOutputResService>()
+            .AddTransient<ITransactionManager,TransactionsManager>()
             .AddTransient<IConsoleView, ConsoleView>()
+            .AddTransient<ITransactionsMenu, TransactionsMenu>()
             .AddTransient<IProductSelection, ProductSelection>()
             .AddTransient<IDiagnostics, Diagnostics>()
             .AddTransient<IReplacement, Replacement>()
             .AddTransient<IPayment, Payment>()
+            .AddSingleton<IOrderLineRepository,OrderLineRepository>()
             .AddTransient<ISavePaymentData, SavePaymentData>()
-            .AddTransient<IPaymentOverview, PaymentOverview>()
-
+            .AddTransient<ITransactionsOverview, TransactionsOverview>()
+            
 
             .BuildServiceProvider();
-
+        
         var program = serviceProvider.GetService<IConsoleView>();
         program.ConsoleInterface();
 

@@ -10,11 +10,31 @@ namespace AsrServiceTest.Register
 {
     internal class OrderLine : IOrderLine
     {
-        private Guid _id;
+        private int _id;
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         private string _serviceName;
+        public string ServiceName
+        {
+            get { return _serviceName; }
+            set { _serviceName = value; }
+        }
         private int _serviceCost;
+        public int ServiceCost
+        {
+            get { return _serviceCost; }
+            set { _serviceCost = value; }
+        }
         private int _overpaymentValue;
-        public OrderLine(Guid id, string serviceName, int serviceCost, int overpaymentValue)
+        public int OverpaymentValue
+        {
+            get { return _overpaymentValue; }
+            set { _overpaymentValue = value; }
+        }
+        public OrderLine(int id, string serviceName, int serviceCost, int overpaymentValue)
         {
             _id = id;
             _serviceName = serviceName;

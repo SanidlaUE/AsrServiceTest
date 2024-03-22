@@ -9,8 +9,8 @@ namespace AsrServiceTest.Data
 {
     internal class Wheels : IProduct
     {
-        private Guid id;
-        public Guid Id
+        private int id;
+        public int Id
         {
             get { return id; }
             set { id = value; }

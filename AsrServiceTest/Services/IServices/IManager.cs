@@ -8,6 +8,6 @@ namespace AsrServiceTest.Services.IServices
 {
     internal interface IManager
     {
-        public string Manage(int chosenItemMainMenu);
+        public string ManageMain(int chosenItemMainMenu);        
     }
 }
