@@ -10,24 +10,26 @@ namespace AsrServiceTest.Data
     internal class Oil : IProduct
     {
         private int id;
+
+        private string name = "Oil";
+
+        private int price = 200;
+
+        private int state;
+
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
-        private string name = "Oil";
         public string Name
         {
             get { return name; }
         }
-
-        private int price = 200;
         public int Price
         {
             get { return price; }
         }
-        private int state;
         public int State
         {
             get { return state; }
