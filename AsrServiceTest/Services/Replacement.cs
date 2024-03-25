@@ -14,6 +14,7 @@ namespace AsrServiceTest.Services
         private readonly IConsoleOutputResService _consoleOutputResService;
         private readonly IPayment _payment;
         private readonly ISavePaymentData _savePaymentData;
+        int id;
         private IProduct product;
         public Replacement(
             IProductSelection productSelection, 

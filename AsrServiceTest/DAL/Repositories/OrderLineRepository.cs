@@ -20,12 +20,7 @@ namespace AsrServiceTest.DAL.Repositories
 
         public OrderLine GetById(int id)
         {
-            bool idExist = _appDbContext.OrderLines.Any(n => n.Id == id);
-            if (idExist)
-            {
-                return _appDbContext.OrderLines.FirstOrDefault(n => n.Id == id);
-            }
-            else return null;
+            return _appDbContext.OrderLines.FirstOrDefault(n => n.Id == id);
         }
 
         public IQueryable<OrderLine> GetAll()
@@ -35,12 +30,7 @@ namespace AsrServiceTest.DAL.Repositories
 
         public IEnumerable<OrderLine> GetByName(string name)
         {
-            bool listExist = _appDbContext.OrderLines.Any(n => n.ServiceName == name);
-            if (listExist)
-            {
-                return _appDbContext.OrderLines.Where(n => n.ServiceName == name);
-            }
-            else return Enumerable.Empty<OrderLine>();
+            return _appDbContext.OrderLines.Where(n => n.ServiceName == name);
         }
         public bool Add(OrderLine entity)
         {
@@ -82,7 +72,7 @@ namespace AsrServiceTest.DAL.Repositories
 
             _appDbContext.Remove(service);
             _appDbContext.SaveChanges();
-            return true;            
+            return true;
         }
 
     }
